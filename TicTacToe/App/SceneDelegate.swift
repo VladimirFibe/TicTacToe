@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  TicTacToe
-//
-//  Created by Lion on 29.09.2024.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -18,9 +11,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let controller = ViewController()
-        controller.view.backgroundColor = .systemRed
-        window?.rootViewController = controller
+        let controller = OnboardingViewController()
+        window?.rootViewController = UINavigationController(rootViewController: controller)
         window?.makeKeyAndVisible()
     }
 }

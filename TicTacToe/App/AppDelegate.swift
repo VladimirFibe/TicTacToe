@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  TicTacToe
-//
-//  Created by Lion on 29.09.2024.
-//
-
 import UIKit
 
 @main
