@@ -54,11 +54,24 @@ private extension OnboardingViewController {
     
     func setupPrimaryButton() {
         view.addSubview(primaryButton)
-        primaryButton.setTitle("Let’s play", for: [])
+        var config = UIButton.Configuration.filled()
+        config.title = "Let’s play"
+        config.baseBackgroundColor = .basicBlue
+        config.baseForegroundColor = .white
+        config.cornerStyle = .capsule
+        config.titleTextAttributesTransformer =
+          UIConfigurationTextAttributesTransformer { incoming in
+            var outgoing = incoming
+              outgoing.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+            return outgoing
+          }
+        primaryButton.configuration = config
         primaryButton.addTarget(self, action: #selector(primaryButtonTapped), for: .touchUpInside)
         primaryButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            primaryButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            primaryButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
+            primaryButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
+            primaryButton.heightAnchor.constraint(equalToConstant: 72),
             primaryButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
     }
