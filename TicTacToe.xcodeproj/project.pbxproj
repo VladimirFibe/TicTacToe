@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		B4008F492CA91FB100AFFDBA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B41BEA262CA90A88009F4D36 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -45,6 +46,7 @@
 		B41BEA1D2CA90A88009F4D36 = {
 			isa = PBXGroup;
 			children = (
+				B4008F492CA91FB100AFFDBA /* README.md */,
 				B41BEA282CA90A88009F4D36 /* TicTacToe */,
 				B41BEA272CA90A88009F4D36 /* Products */,
 			);
