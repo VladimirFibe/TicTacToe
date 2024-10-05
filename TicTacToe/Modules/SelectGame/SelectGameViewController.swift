@@ -104,8 +104,13 @@ private extension SelectGameViewController {
             button.addAction(
               UIAction {[weak self] _ in
                   switch item {
-                  case .singlePlayer: print(item.title)
-                  case .multiPlayer: print(item.title)
+                  case .singlePlayer:
+                      let controller = GameViewContoller(singlePlayerGame: true)
+                      self?.navigationController?.pushViewController(controller, animated: true)
+                      
+                  case .multiPlayer:
+                      let controller = GameViewContoller(singlePlayerGame: false)
+                      self?.navigationController?.pushViewController(controller, animated: true)
                   case .leaderboard:
                       self?.navigationController?.pushViewController(
                         RulesViewController(),
@@ -119,11 +124,6 @@ private extension SelectGameViewController {
             buttonsView.addArrangedSubview(button)
         }
     }
-}
-
-@available(iOS 17.0, *)
-#Preview {
-    UINavigationController(rootViewController: SelectGameViewController())
 }
 
 enum SelectGameButtons: CaseIterable {
