@@ -1,7 +1,7 @@
 import UIKit
 
 final class GameViewContoller: UIViewController {
-    private var game = TicTacToe()
+    private var game = TicTacToe() { didSet { updateUI() }}
     private let singlePlayerGame: Bool
     private var buttons = [UIButton]()
     private let buttonsView = UIStackView()
@@ -88,11 +88,16 @@ private extension GameViewContoller {
     
     @objc func buttonTapped(_ sender: UIButton) {
         game.processPlayerMove(for: sender.tag)
+        if let result = game.gameRusult {
+            game.resetGame()
+            let controller = ResultViewController(result: result)
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
+    func updateUI() {
         buttons.forEach {
             $0.setBackgroundImage(game.moves[$0.tag]?.indicator, for: .normal)
-        }
-        if let result = game.gameRusult {
-            print(result)
         }
     }
 }
