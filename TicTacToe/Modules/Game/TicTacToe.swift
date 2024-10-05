@@ -105,4 +105,12 @@ struct Move {
 
 enum GameResult {
     case win, lose, draw
+    
+    var title: String {
+        switch self {
+        case .win: return "You win!"
+        case .lose: return "You lose!"
+        case .draw: return "Draw!"
+        }
+    }
 }
