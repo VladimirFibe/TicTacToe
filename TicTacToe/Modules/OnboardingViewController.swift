@@ -37,7 +37,7 @@ class OnboardingViewController: UIViewController {
     }
     
     @objc private func primaryButtonTapped() {
-        
+        navigationController?.pushViewController(SelectGameViewController(), animated: true)
     }
 }
 
