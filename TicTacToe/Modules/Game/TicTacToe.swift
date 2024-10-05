@@ -11,21 +11,14 @@ struct TicTacToe {
             isGameboardDisabled = true
             if checkWinCondition(for: .human, in: moves) {
                 gameRusult = .win
-            }
-            
-            if checkForDraw(in: moves) {
+            } else  if checkForDraw(in: moves) {
                 gameRusult = .draw
-            }
-            
-            if let empty = emptyIndex() {
+            } else if let empty = emptyIndex() {
                 moves[empty] = Move(player: .computer, index: empty)
                 isGameboardDisabled = false
-                
                 if checkWinCondition(for: .computer, in: moves) {
                     gameRusult = .lose
-                }
-                
-                if checkForDraw(in: moves) {
+                } else if checkForDraw(in: moves) {
                     gameRusult = .draw
                 }
             }
@@ -111,6 +104,14 @@ enum GameResult {
         case .win: return "You win!"
         case .lose: return "You lose!"
         case .draw: return "Draw!"
+        }
+    }
+    
+    var image: UIImage {
+        switch self {
+        case .win: return .win
+        case .lose: return .lose
+        case .draw: return .draw
         }
     }
 }
