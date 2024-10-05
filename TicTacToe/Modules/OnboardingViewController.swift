@@ -28,7 +28,8 @@ class OnboardingViewController: UIViewController {
     }
     
     @objc private func rulesTapped() {
-        
+        let controller = RulesViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc private func settingsTapped() {
