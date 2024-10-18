@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		45781BD42CC1F73B00FC99B5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 45781BD32CC1F73B00FC99B5 /* FirebaseAuth */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		B4008F492CA91FB100AFFDBA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B41BEA262CA90A88009F4D36 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45781BD42CC1F73B00FC99B5 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +85,7 @@
 			);
 			name = TicTacToe;
 			packageProductDependencies = (
+				45781BD32CC1F73B00FC99B5 /* FirebaseAuth */,
 			);
 			productName = TicTacToe;
 			productReference = B41BEA262CA90A88009F4D36 /* TicTacToe.app */;
@@ -109,6 +115,9 @@
 			);
 			mainGroup = B41BEA1D2CA90A88009F4D36;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				45781BD22CC1F73B00FC99B5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B41BEA272CA90A88009F4D36 /* Products */;
 			projectDirPath = "";
@@ -339,6 +348,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		45781BD22CC1F73B00FC99B5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 11.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		45781BD32CC1F73B00FC99B5 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 45781BD22CC1F73B00FC99B5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B41BEA1E2CA90A88009F4D36 /* Project object */;
 }
