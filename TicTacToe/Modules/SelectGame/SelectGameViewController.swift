@@ -6,11 +6,7 @@ final class SelectGameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .basicBackground
-        setupNavBar()
-        setupBackgroundView()
-        setLabelSelectGame()
-        setButtonsView()
+        setupViews()
     }
 
     @objc private func playTapped() {
@@ -34,8 +30,15 @@ final class SelectGameViewController: UIViewController {
 //        self.navigationController?.pushViewController(LeaderboardViewController(), animated: true)
     }
 }
-
+// MARK: - Setup Views
 private extension SelectGameViewController {
+    func setupViews() {
+        view.backgroundColor = .basicBackground
+        setupNavBar()
+        setupBackgroundView()
+        setLabelSelectGame()
+        setButtonsView()
+    }
     func setupNavBar() {
         navigationItem.setHidesBackButton(true, animated: false)
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -80,6 +83,7 @@ private extension SelectGameViewController {
             buttonsView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -20)
         ])
     }
+    
     func setButtonsView() {
         buttonsView.axis = .vertical
         buttonsView.distribution = .fillEqually
@@ -122,35 +126,6 @@ private extension SelectGameViewController {
             )
             button.heightAnchor.constraint(equalToConstant: 64).isActive = true
             buttonsView.addArrangedSubview(button)
-        }
-    }
-}
-
-enum SelectGameButtons: CaseIterable {
-    case singlePlayer
-    case multiPlayer
-    case leaderboard
-    
-    var title: String {
-        switch self {
-        case .singlePlayer: return "Single Player"
-        case .multiPlayer: return "Two Players"
-        case .leaderboard: return "Leaderboard"
-        }
-    }
-    
-    var color: UIColor {
-        switch self {
-        case .leaderboard: return .secondaryPurple
-        default: return .basicLightBlue
-        }
-    }
-    
-    var image: UIImage {
-        switch self {
-        case .singlePlayer: return .singlePlayer
-        case .multiPlayer: return .multiPlayer
-        case .leaderboard: return .leaderboard
         }
     }
 }

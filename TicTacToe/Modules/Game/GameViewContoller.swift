@@ -1,6 +1,7 @@
 import UIKit
 
 final class GameViewContoller: UIViewController {
+    private let store = GameStore()
     private var game = TicTacToe() { didSet { updateUI() }}
     private let singlePlayerGame: Bool
     private var buttons = [UIButton]()
@@ -16,10 +17,7 @@ final class GameViewContoller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavBar()
-        view.backgroundColor = .basicBackground
-        setupBackgroundView()
-        setButtonsView()
+        setupViews()
     }
     
     private func setupNavBar() {
@@ -36,8 +34,19 @@ final class GameViewContoller: UIViewController {
         navigationController?.popViewController(animated: true)
     }
 }
-
+// MARK: - Setup Views
 private extension GameViewContoller {
+    
+    func setupViews() {
+        if !singlePlayerGame {
+            store.sendAction(.fetch)
+        }
+        setupNavBar()
+        view.backgroundColor = .basicBackground
+        setupBackgroundView()
+        setButtonsView()
+    }
+    
     func setupBackgroundView() {
         let backgroundView = UIView()
         view.addSubview(backgroundView)

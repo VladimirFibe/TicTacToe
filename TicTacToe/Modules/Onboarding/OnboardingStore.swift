@@ -1,5 +1,6 @@
 import Combine
 import FirebaseAuth
+import FirebaseFirestore
 
 enum OnboardingEvent {
     case done
@@ -22,6 +23,12 @@ final class OnboardingStore: Store<OnboardingEvent, OnboardingAction> {
     private func login() async throws {
         if Auth.auth().currentUser == nil {
             let authResult = try await Auth.auth().signInAnonymously()
-        }
+            try await createPerson(with: authResult.user.uid)
+        } 
+    }
+    
+    func createPerson(with uid: String) async throws {
+        let person = Person(id: uid, name: "Player \(Int.random(in: 0..<1000))")
+        try Firestore.firestore().collection("persons").document(uid).setData(from: person)
     }
 }
