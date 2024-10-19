@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyBT6Quy0lq8EzL67g4ZiYqUxZxhMYY-AAU</string>
+	<string>AIzaSyCXzm_xclQ99j1taf0XKU2esrU438ylmuo</string>
 	<key>GCM_SENDER_ID</key>
-	<string>448023559959</string>
+	<string>995680206252</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>ru.fibeapp.TicTacToe</string>
 	<key>PROJECT_ID</key>
-	<string>tictactoe-6c2fc</string>
+	<string>tictactoe-e8a7e</string>
 	<key>STORAGE_BUCKET</key>
-	<string>tictactoe-6c2fc.appspot.com</string>
+	<string>tictactoe-e8a7e.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:448023559959:ios:357e79fbbe7b9831024152</string>
+	<string>1:995680206252:ios:5697eee9fde6b7ba230e09</string>
 </dict>
 </plist>

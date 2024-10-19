@@ -3,13 +3,11 @@ import UIKit
 class OnboardingViewController: UIViewController {
     private let onboardingImageView = UIImageView()
     private let primaryButton = UIButton(type: .system)
+    private let store = OnboardingStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        setupNavBar()
-        setupOnboardingImageView()
-        setupPrimaryButton()
+        setupViews()
     }
     
     private func setupNavBar() {
@@ -40,8 +38,15 @@ class OnboardingViewController: UIViewController {
         navigationController?.pushViewController(SelectGameViewController(), animated: true)
     }
 }
-
+// MARK: - Setup
 private extension OnboardingViewController {
+    func setupViews() {
+        store.sendAction(.login)
+        view.backgroundColor = .systemBackground
+        setupNavBar()
+        setupOnboardingImageView()
+        setupPrimaryButton()
+    }
     func setupOnboardingImageView() {
         view.addSubview(onboardingImageView)
         onboardingImageView.image = .onboarding
