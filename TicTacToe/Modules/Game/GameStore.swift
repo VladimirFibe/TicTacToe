@@ -11,6 +11,9 @@ enum GameAction {
 }
 
 final class GameStore: Store<GameEvent, GameAction> {
+    var person: Person?
+    var player: Person?
+    
     override func handleActions(action: GameAction) {
         switch action {
         case .fetch:
@@ -22,19 +25,21 @@ final class GameStore: Store<GameEvent, GameAction> {
     
     private func fetch() async throws {
         guard let id = Auth.auth().currentUser?.uid else { return }
+        let querySnapshot = try await Firestore.firestore().collection("persons").document(id).getDocument()
+        person = try? querySnapshot.data(as: Person.self)
         let query = try await Firestore.firestore().collection("players")
             .whereField("id", isNotEqualTo: id)
             .limit(to: 50).getDocuments()
         let persons = query.documents.compactMap { try? $0.data(as: Person.self)}
         if persons.isEmpty {
-            try await addPlayer(with: id)
-        }
-    }
-    
-    private func addPlayer(with uid: String) async throws {
-        let querySnapshot = try await Firestore.firestore().collection("persons").document(uid).getDocument()
-        if let person = try? querySnapshot.data(as: Person.self) {
-            try Firestore.firestore().collection("players").document(uid).setData(from: person)
+            guard let person else { return }
+            try Firestore.firestore().collection("players").document(id).setData(from: person)
+        } else {
+            player = persons.first
+            guard let uid = player?.id else { return }
+            try await Firestore.firestore().collection("players").document(uid).delete()
+            print("person: ", person?.id ?? "empty")
+            print("player: ", player?.id ?? "empty")
         }
     }
 }
